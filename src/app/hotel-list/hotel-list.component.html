@@ -1,0 +1,13 @@
+<div class="row" style="margin-top:40px">
+  <div class="card-group">
+    <div class="card  col-sm-3" *ngFor="let hotel of hotels; let i = index">
+      <img class="card-img-top" width="200" alt="Angular Logo" alt="Hotel random" [src]="hotel.img">
+      <div class="card-body">
+        <h5 class="card-title">{{ hotel.name }} - {{ hotel.location }}</h5>
+        <p class="card-text">{{ hotel.description }}</p>
+        <p class="card-text"><small class="text-muted">nombre de chambre disponible : {{ hotel.chambres.length }}</small></p>
+      </div>
+      <button class="btn btn-primary" (click)="getDetail(i)">Details</button>
+    </div>
+  </div>
+</div>

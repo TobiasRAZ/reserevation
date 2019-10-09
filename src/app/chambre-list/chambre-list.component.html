@@ -1,0 +1,28 @@
+<a routerLink="">< Revenir à liste d'hôtels</a>
+<h2>Hotel - {{ hotel.name }}</h2>
+<p>{{ hotel.description }}</p>
+<div class="col-sm-8">
+  <div class="card col-sm-4" [ngClass]="{ 'card-success': i == check }" *ngFor="let chambre of hotel.chambres; let i = index">
+    <div class="card-header"><h3>Chambre pour {{ chambre.person() }} personnes</h3></div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Grand lit
+          <span class="badge badge-primary badge-pill">{{ chambre.grandLit }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Simple lit
+          <span class="badge badge-primary badge-pill">{{ chambre.litSimple }}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <span>{{ chambre.price }} €</span> &nbsp;
+      <button class="btn btn-primary" (click)="reserver(i)" *ngIf="!formDisplay">Réserver</button>
+    </div>
+  </div>
+</div>
+<div class="col-sm-4" *ngIf="formDisplay">
+  <app-reservation-form></app-reservation-form>
+  <button class="btn btn-danger" (click)="toogleForm()">Annuler</button>
+</div>

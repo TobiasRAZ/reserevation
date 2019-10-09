@@ -1,0 +1,25 @@
+<div class="reservation-form">
+    <h2>Je veux réserver !</h2>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group">
+            <label for="name">Nom</label>
+            <input type="text" id="name" class="form-control" name="name" ngModel required>
+        </div>
+        <div class="form-group">
+            <label for="firstname">Prénom</label>
+            <input type="text" id="firstname" class="form-control" name="firstname" ngModel required>
+        </div>
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" class="form-control" name="age" ngModel required>
+        </div>
+        <div class="form-group">
+            <label for="sexe">Sexe</label>
+            <select name="sexe" id="sexe" class="form-control" ngModel required>
+            <option value="homme">Homme</option>
+            <option value="femme">Femme</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Soumettre</button>
+    </form>
+</div>
