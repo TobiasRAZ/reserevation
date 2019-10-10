@@ -1,8 +1,8 @@
-<a routerLink="">< Revenir à liste d'hôtels</a>
+<a routerLink="/hotels">< Revenir à liste d'hôtels</a>
 <h2>Hotel - {{ hotel.name }}</h2>
 <p>{{ hotel.description }}</p>
 <div class="col-sm-8">
-  <div class="card col-sm-4" [ngClass]="{ 'card-success': i == check }" *ngFor="let chambre of hotel.chambres; let i = index">
+  <div class="card col-sm-5" [ngClass]="{ 'card-success': i == check }" *ngFor="let chambre of hotel.chambres; let i = index">
     <div class="card-header"><h3>Chambre pour {{ chambre.person() }} personnes</h3></div>
     <div class="card-body">
       <ul class="list-group">
@@ -17,7 +17,8 @@
       </ul>
     </div>
     <div class="card-footer">
-      <span>{{ chambre.price }} €</span> &nbsp;
+      <span>{{ chambre.price }} € / nuitée</span> &nbsp; <br>
+      <span>{{ calculate(chambre.price) }} €</span> &nbsp;
       <button class="btn btn-primary" (click)="reserver(i)" *ngIf="!formDisplay">Réserver</button>
     </div>
   </div>

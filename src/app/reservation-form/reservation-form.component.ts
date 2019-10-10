@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ReservationService } from '../services/reservation.service';
 
 @Component({
   selector: 'app-reservation-form',
@@ -9,13 +10,17 @@ import { Router } from '@angular/router';
 })
 export class ReservationFormComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private reservationService: ReservationService) { }
 
   ngOnInit() {
   }
   
   onSubmit(form: NgForm) {
-    this.router.navigate(['/reservation/success'])
+    const reservation = {
+      user: form.value
+    }
+    const id = this.reservationService.addReservation(reservation)
+    this.router.navigate(['/reservation/success/'+id])
   }
 
 }

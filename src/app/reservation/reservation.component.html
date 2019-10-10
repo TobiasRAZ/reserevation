@@ -1,13 +1,16 @@
 <div class="row">
     <div class="col-sm-12">
-        <form>
+        <form (ngSubmit)="filter()">
         <div class="form-group">
             <label for="name">Choisir une date d'arrivé</label>
-            <input type="date" id="name" class="form-control" name="name" required>
+            <input type="date" id="name" class="form-control" name="name" required [(ngModel)]="arrival_date">
         </div>
         <div class="form-group">
             <label for="name">Choisir une date de départ</label>
-            <input type="date" id="name" class="form-control" name="name" required>
+            <input type="date" id="name" class="form-control" name="name" required [(ngModel)]="departure_date">
+        </div>
+        <div>
+            <p>{{ nuitees() }} nuitée(s)</p>
         </div>
         <div class="form-group col-sm-6">
             <label for="name">Adultes</label>
@@ -29,7 +32,7 @@
                     <option value="4">4</option>
                 </select>
             </div>
-        <button type="submit" class="btn btn-primary">Voir disponible</button>
+        <button type="submit" class="btn btn-primary" [disabled]="nuitees() <= 0">Voir disponible</button>
         </form>
     </div>
 </div>

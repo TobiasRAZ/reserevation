@@ -15,13 +15,15 @@ import { FormsModule } from '@angular/forms';
 import { ReservationFormComponent } from './reservation-form/reservation-form.component';
 import { NewHotelComponent } from './new-hotel/new-hotel.component';
 import { ReservationSuccessComponent } from './reservation-success/reservation-success.component';
+import { NoFilterComponent } from './no-filter/no-filter.component';
+import { ReservationService } from './services/reservation.service';
 
 const appRoutes: Routes = [
-  { path: '', component: HotelListComponent },
+  { path: '', component: NoFilterComponent },
   { path: 'hotels', component: HotelListComponent },
   { path: 'hotels/:id', component: ChambreListComponent },
   { path: 'admin/new-hotel', component: NewHotelComponent },
-  { path: 'reservation/success', component: ReservationSuccessComponent }
+  { path: 'reservation/success/:id', component: ReservationSuccessComponent }
 ]
 
 @NgModule({
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
     ReservationComponent,
     ReservationFormComponent,
     NewHotelComponent,
-    ReservationSuccessComponent
+    ReservationSuccessComponent,
+    NoFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     HotelService,
+    ReservationService
     //MatDatepickerModule
   ],
   bootstrap: [AppComponent]

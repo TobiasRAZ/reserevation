@@ -21,7 +21,7 @@ export class NewHotelComponent implements OnInit {
     const location = form.value.location
     const description = form.value.description
     this.hotelService.addHotel(name, location, description, [])
-    this.router.navigate([''])
+    this.router.navigate(['/hotels'])
   }
 
 }
